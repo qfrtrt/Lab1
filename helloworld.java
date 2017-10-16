@@ -220,10 +220,4 @@ public class helloworld {
 	      File out = new File("D:\\temp\\out"+arg+"." + type);
 	      gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 	   }
-
-
-
-
-
-}
-/1212
+}11

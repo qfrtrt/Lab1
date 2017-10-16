@@ -264,6 +264,4 @@ return img_stream;   }
 
     this.graph = sb;
    }
-
-} // end of class GraphViz
 22
