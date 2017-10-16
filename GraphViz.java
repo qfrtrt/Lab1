@@ -57,7 +57,7 @@ import java.io.InputStreamReader;
  *
  * @version v0.4, 2011/02/05 (February) -- Patch of Keheliya Gallaba is added. Now you
  * can specify the type of the output file: gif, dot, fig, pdf, ps, svg, png, etc.
- * @version v0.3, 2010/11/29 (November) -- Windows support + ability 
+ * @version v0.3, 2010/11/29 (November) -- Windows support + ability
  * to read the graph from a text file
  * @version v0.2, 2010/07/22 (July) -- bug fix
  * @version v0.1, 2003/12/04 (December) -- first release
@@ -98,12 +98,12 @@ public class GraphViz
    public void add(String line) {
       graph.append(line);
    }
-   
+
    public void replace(int start, int end, String line) {
 	   graph.replace(start, end, line);
    }
 /**
-   
+
     * Adds a string to the graph's source (with newline).
     */
    public void addln(String line) {
@@ -125,13 +125,13 @@ public class GraphViz
    {
       File dot;
       byte[] img_stream = null;
-   
+
       try {
          dot = writeDotSourceToFile(dot_source);
          if (dot != null)
          {
             img_stream = get_img_stream(dot, type);
-            if (dot.delete() == false) 
+            if (dot.delete() == false)
                System.err.println("Warning: " + dot.getAbsolutePath() + " could not be deleted!");
             return img_stream;
          }
@@ -178,18 +178,18 @@ public class GraphViz
 try {
          img = File.createTempFile("graph_", "."+type, new File(GraphViz.TEMP_DIR));
          Runtime rt = Runtime.getRuntime();
-         
+
          // patch by Mike Chenault
          String[] args = {DOT, "-T"+type, dot.getAbsolutePath(), "-o", img.getAbsolutePath()};
          Process p = rt.exec(args);
-         
+
          p.waitFor();
 FileInputStream in = new FileInputStream(img.getAbsolutePath());
          img_stream = new byte[in.available()];
          in.read(img_stream);
          // Close it if we need to
          if( in != null ) in.close();
-if (img.delete() == false) 
+if (img.delete() == false)
             System.err.println("Warning: " + img.getAbsolutePath() + " could not be deleted!");
       }
       catch (java.io.IOException ioe) {
@@ -239,14 +239,14 @@ return img_stream;   }
    }
 /**
     * Read a DOT graph from a text file.
-    * 
+    *
     * @param input Input text file containing the DOT graph
     * source.
     */
    public void readSource(String input)
    {
     StringBuilder sb = new StringBuilder();
-    
+
     try
     {
      FileInputStream fis = new FileInputStream(input);
@@ -257,12 +257,13 @@ return img_stream;   }
       sb.append(line);
      }
      dis.close();
-    } 
+    }
     catch (Exception e) {
      System.err.println("Error: " + e.getMessage());
     }
-    
+
     this.graph = sb;
    }
-   
+
 } // end of class GraphViz
+22
