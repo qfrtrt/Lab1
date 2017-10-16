@@ -9,7 +9,7 @@ import welcome.Graph.*;
 public class helloworld {
 	@SuppressWarnings("null")
 	public static void main(String[] args) throws Exception{
-		
+
 //		File file = new File("C:\\Users\\RIZERO\\Desktop\\text.txt");
 //		Scanner sc = new Scanner(file,"UTF-8");
 		Scanner sc = new Scanner(Paths.get("C:\\Users\\RIZERO\\Desktop\\text.txt"),"UTF-8");
@@ -20,24 +20,24 @@ public class helloworld {
 		Matcher ma;
 		String str;
 		boolean flag1 = true, flag2 = true;
-		
+
 		List<Vertex> verList = new LinkedList<Graph.Vertex>();
 
 		Map<String, List<Edge>> ve_Map = new HashMap<String, List<Edge>>();
         Graph g = new Graph(verList, ve_Map);
-		
+
 		Vertex vertex = null;
 
-		while(sc.hasNext()) 
+		while(sc.hasNext())
 		{
 	        str = sc.next().toLowerCase();
 	        ma = pattern.matcher(str);
-			while(ma.find()) 
+			while(ma.find())
 				if(!ma.group().equals(""))
 				    list.add(ma.group());
 		}
 		sc.close();
-		
+
 			for(String word : list) {
 				word1 = word2;
 				word2 = word;
@@ -57,26 +57,26 @@ public class helloworld {
 							break;
 						}
 					}
-					
+
 	                if(flag1) {
 	                	vertex = new Vertex(word1);
 						verList.add(vertex);
 						ve_Map.put(vertex.getName(), new LinkedList<Graph.Edge>());
 					}
-	                
+
 	                for(Edge edge : ve_Map.get(word1)) {
 						if (word2.equals(edge.getEnd().getName())) {
-		
+
 							edge.upWeight();
 							flag2 = false;
 							break;
 							}
 						}
-					
+
 	                if(flag2 && !(word1.equals(""))) {
 	                	vertex = new Vertex(word2);
 	                	ve_Map.get(word1).add(new Edge(vertex, 1));
-	                }	
+	                }
 				}
 			}
 		System.out.println("功能1&功能2:读入文本并生成有向图&展示有向图");
@@ -110,10 +110,10 @@ public class helloworld {
         start2(verList, ve_Map, ran_path, 2);
 		System.out.println(list);
 		System.out.println(new Date());
-		
+
 
  }
-		
+
 	private static void showDirectedGraph(List<Vertex> verList, Map<String, List<Edge>> ve_Map)
 	   {
 	      GraphViz gv = new GraphViz();
@@ -121,15 +121,15 @@ public class helloworld {
 	      for(Vertex ver : verList) {
 	    	  gv.addln(ver.getName());
 	    	  for(Edge edge : ve_Map.get(ver.getName())) {
-	    		  
+
 	    		  gv.addln(ver.getName()+" -> "+edge.getEnd().getName()+" [label = \"" + edge.getWeight() +"\"]" + ";");
-	    		  
+
 	    	  }
 	      }
-	      
+
 	      gv.addln(gv.end_graph());
 //	      System.out.println(gv.getDotSource());
-	      
+
 //	      String type = "gif";
 //	      String type = "dot";
 //	      String type = "fig";    // open with xfig
@@ -139,24 +139,24 @@ public class helloworld {
 	      String type = "png";
 //	      String type = "plain";
 //	      File out = new File("/tmp/out." + type);   // Linux
-	      File out = new File("D:\\temp\\out." + type);  
+	      File out = new File("D:\\temp\\out." + type);
 	      gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 	   }
-	   
+
 	   /**
 	    * Read the DOT source from a file,
 	    * convert to image and store the image in the file system.
 	    */
 	private static void start2(List<Vertex> verList, Map<String, List<Edge>> ve_Map, String path, int arg)
-	   { 
+	   {
 		  String word1 = "", word2 = "";
 		  boolean flag = false;
 		  GraphViz gv = new GraphViz();
 		  path.trim();
-	   
+
 	      String[] str = path.split(" -> ");
 	      gv.addln(gv.start_graph());
-	      
+
 	      for(Vertex ver : verList) {
 	    	  if (verList.size()==1)
 	    	  {
@@ -187,7 +187,7 @@ public class helloworld {
 			    					  gv.addln(word1 + " [color = lightblue]");
 			    					  gv.addln(word2 + " [color = lightblue]");
 			    					  gv.addln(word1+" -> "+word2+" [label = \"" + edge.getWeight() +"\" " + "color=lightblue]" + ";");
-			    				  }  
+			    				  }
 			    				  flag = false;
 			    			  }
 		    			  }
@@ -206,7 +206,7 @@ public class helloworld {
 
 	      gv.addln(gv.end_graph());
 //	      System.out.println(gv.getDotSource());
-	      
+
 //	      String type = "gif";
 //	      String type = "dot";
 //	      String type = "fig";    // open with xfig
@@ -216,13 +216,13 @@ public class helloworld {
 	      String type = "png";
 //	      String type = "plain";
 //	      File out = new File("/tmp/out." + type);   // Linux
-	      
-	      File out = new File("D:\\temp\\out"+arg+"." + type);  
+
+	      File out = new File("D:\\temp\\out"+arg+"." + type);
 	      gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 	   }
-	
-
-	
 
 
-}
+
+
+
+}11
