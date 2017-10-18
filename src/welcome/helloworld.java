@@ -13,7 +13,7 @@ public class helloworld {
 		
 //		File file = new File("C:\\Users\\RIZERO\\Desktop\\text.txt");
 //		Scanner sc = new Scanner(file,"UTF-8");
-		Scanner sc = new Scanner(Paths.get("C:\\Users\\RIZERO\\Desktop\\text.txt"),"UTF-8");
+		Scanner sc = new Scanner(Paths.get("E:\\mubiao.txt"),"UTF-8");
 		Scanner in = new Scanner(System.in);
 		ArrayList<String> list = new ArrayList<String>();
 		String s = "[a-z]*", word1 = "", word2 = "";
@@ -140,7 +140,7 @@ public class helloworld {
 	      String type = "png";
 //	      String type = "plain";
 //	      File out = new File("/tmp/out." + type);   // Linux
-	      File out = new File("D:\\temp\\out." + type);  
+	      File out = new File("E:\\temp\\out." + type);  
 	      gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 	   }
 	   
@@ -218,7 +218,7 @@ public class helloworld {
 //	      String type = "plain";
 //	      File out = new File("/tmp/out." + type);   // Linux
 	      
-	      File out = new File("D:\\temp\\out"+arg+"." + type);  
+	      File out = new File("E:\\out"+arg+"." + type);  
 	      gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 	   }
 	

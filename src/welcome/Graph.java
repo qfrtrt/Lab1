@@ -122,7 +122,7 @@ public class Graph {
 	@SuppressWarnings("resource")
 	public String randomWalk() throws FileNotFoundException, UnsupportedEncodingException {
 
-		PrintWriter out = new PrintWriter("C:\\Users\\RIZERO\\Desktop\\random_path.txt", "UTF-8");
+		PrintWriter out = new PrintWriter("E:\\asssss.txt", "UTF-8");
 		String path = "";
 		Vertex start = vertexList.get((int)(vertexList.size()*Math.random()));
 		Vertex now = null, next = null;
